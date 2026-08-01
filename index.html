@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ISO 9001 标准更新追踪</title>
+<style>
+  :root {
+    --tuv-blue: #003366;
+    --tuv-light: #004d99;
+    --tuv-accent: #0099cc;
+    --bg: #f4f6f9;
+    --card-bg: #ffffff;
+    --text: #1a1a2e;
+    --text-secondary: #5a6070;
+    --border: #e0e4ea;
+    --tag-bg: #e8f4f8;
+    --tag-text: #006080;
+    --fresh: #e63946;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  header {
+    background: linear-gradient(135deg, var(--tuv-blue) 0%, #002244 100%);
+    color: #fff;
+    padding: 2rem 1rem 1.5rem;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 12px rgba(0,0,0,.15);
+  }
+  header h1 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: .02em;
+  }
+  header .subtitle {
+    font-size: .85rem;
+    opacity: .75;
+    margin-top: .25rem;
+  }
+  header .update-time {
+    font-size: .75rem;
+    opacity: .55;
+    margin-top: .5rem;
+  }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  .stats-bar {
+    display: flex;
+    gap: .75rem;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+  }
+  .stat {
+    background: var(--card-bg);
+    border-radius: 8px;
+    padding: .6rem 1rem;
+    font-size: .82rem;
+    color: var(--text-secondary);
+    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    display: flex;
+    align-items: center;
+    gap: .35rem;
+  }
+  .stat .num {
+    font-weight: 700;
+    color: var(--tuv-blue);
+    font-size: 1.1rem;
+  }
+  .stat .new-badge {
+    background: var(--fresh);
+    color: #fff;
+    font-size: .65rem;
+    padding: 1px 6px;
+    border-radius: 10px;
+    font-weight: 600;
+  }
+  .filter-row {
+    display: flex;
+    gap: .5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  .filter-tag {
+    font-size: .78rem;
+    padding: .3rem .75rem;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: #fff;
+    cursor: pointer;
+    transition: all .2s;
+    user-select: none;
+  }
+  .filter-tag:hover { border-color: var(--tuv-accent); color: var(--tuv-accent); }
+  .filter-tag.active {
+    background: var(--tuv-blue);
+    color: #fff;
+    border-color: var(--tuv-blue);
+  }
+  .news-list { display: flex; flex-direction: column; gap: .75rem; }
+  .news-card {
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    transition: transform .15s, box-shadow .15s;
+    border-left: 4px solid transparent;
+    cursor: pointer;
+    position: relative;
+  }
+  .news-card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 12px rgba(0,0,0,.1);
+  }
+  .news-card.new { border-left-color: var(--fresh); }
+  .news-card .source-tag {
+    display: inline-block;
+    font-size: .7rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 12px;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    margin-bottom: .4rem;
+  }
+  .news-card .date {
+    font-size: .78rem;
+    color: var(--text-secondary);
+    float: right;
+  }
+  .news-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: .3rem 0;
+    line-height: 1.4;
+    color: var(--tuv-blue);
+  }
+  .news-card .summary {
+    font-size: .85rem;
+    color: var(--text-secondary);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .news-card .read-more {
+    font-size: .78rem;
+    color: var(--tuv-accent);
+    margin-top: .4rem;
+    display: inline-block;
+  }
+  .news-card a {
+    text-decoration: none;
+    color: inherit;
+  }
+  .empty {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--text-secondary);
+    font-size: .9rem;
+  }
+  footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: .75rem;
+    color: #999;
+  }
+  @media (max-width: 600px) {
+    header h1 { font-size: 1.3rem; }
+    .news-card { padding: .8rem 1rem; }
+    .news-card h3 { font-size: .92rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>ISO 9001 标准更新追踪</h1>
+  <div class="subtitle">追踪 ISO 9001 修订动态 · 行业解读 · 过渡指南</div>
+  <div class="update-time" id="updateTime">最后更新：加载中...</div>
+</header>
+
+<div class="container">
+  <div class="stats-bar">
+    <div class="stat">📰 <span class="num" id="totalCount">-</span> 条消息</div>
+    <div class="stat">🆕 <span class="num" id="newCount">-</span> <span class="new-badge">本周新增</span></div>
+    <div class="stat">🗓 覆盖近 <span class="num" id="monthCount">-</span> 天</div>
+  </div>
+
+  <div class="filter-row" id="filterRow">
+    <span class="filter-tag active" data-filter="all">全部</span>
+    <span class="filter-tag" data-filter="revision">标准修订</span>
+    <span class="filter-tag" data-filter="transition">过渡指南</span>
+    <span class="filter-tag" data-filter="analysis">行业解读</span>
+    <span class="filter-tag" data-filter="official">官方动态</span>
+    <span class="filter-tag" data-filter="cn">中文资讯</span>
+  </div>
+
+  <div class="news-list" id="newsList"></div>
+  <div class="empty" id="emptyMsg" style="display:none">暂无匹配的新闻</div>
+</div>
+
+<footer>
+  <p>数据来源：ISO.org · SGS · DNV · Intertek · Quality Magazine · 认证机构公告</p>
+  <p>每日 9:00 自动更新 · Powered by Hermes AI Agent</p>
+</footer>
+
+<script>
+const NEWS_DATA = [{"source": "9001Simplified", "url": "https://www.9001simplified.com/learn/next-iso-9001-revision.php", "title": "ISO 9001:2026 修订完整时间线 — DIS 批准至 FDIS 发布", "summary": "ISO 9001:2026 修订进入最后阶段。DIS 于 2025 年 8 月发布并以 97% 支持率通过，2026 年 2 月墨西哥城会议达成技术共识，FDIS 于 2026 年 7 月获批，正式版预计 2026 年 9 月发布。3 年过渡期同步开启。", "date": "2026-07-15", "tags": ["revision", "official"]}, {"source": "IAF", "url": "https://iaf.nu/", "title": "IAF 预期发布 ISO 9001:2026 过渡安排指南", "summary": "国际认可论坛（IAF）将在 ISO 9001:2026 正式发布后公布过渡安排。业界预期过渡期为 3 年（至 2029 年 9 月），与以往主要修订的过渡政策保持一致。", "date": "2026-07-01", "tags": ["official", "transition"]}, {"source": "SGS", "url": "https://www.sgs.com/en/showcases/iso-9001-2026-key-updates-and-transition-guidance", "title": "ISO 9001:2026 关键更新与过渡指南 — SGS 官方解读", "summary": "新版维持 Annex SL 结构，融入质量文化和道德行为要求。FDIS 已于 2026 年 5 月发布，正式版 9 月发布，过渡期至 2029 年 9 月。建议组织尽早开始差距分析。", "date": "2026-06-15", "tags": ["transition", "official"]}, {"source": "ISO", "url": "https://www.iso.org/standard/62085.html", "title": "ISO 9001:2015 现行标准页面 — ISO 官方", "summary": "ISO 9001:2015 现行版本。ISO/TC 176/SC 2 正在推进 2026 版修订，新版预计 2026 年 9 月发布。这是全球应用最广泛的质量管理体系标准，超过 100 万组织获得认证。", "date": "2026-06-01", "tags": ["official"]}, {"source": "Intertek", "url": "https://www.intertek.com/assurance/iso-9001/iso-9001-2026-key-updates-transition-guidance", "title": "ISO 9001:2026 关键更新与过渡指南 — Intertek 解读", "summary": "新版强调数字化与智能系统（AI、数据分析、自动化）、风险与供应链监督、伦理与组织治理、以及与 ESG 期望的对齐。预计 2026 年 9 月发布，约 3 年过渡期。", "date": "2026-05-10", "tags": ["analysis", "transition"]}, {"source": "Quality Magazine", "url": "https://www.qualitymag.com/articles/99324-iso-9001-in-2026-whats-changingand-how-as9100-ia9100-iatf-16949-nist-and-cmmc-fit-together", "title": "ISO 9001:2026 与 AS9100/IA9100、IATF 16949 的联动变化", "summary": "2026 年将迎来质量与合规标准的重大交汇。AS9100 将更名为 IA9100 并与 ISO 9001:2026 保持同步；IATF 16949 也在进行现代化更新。美国国防供应商面临 NIST 和 CMMC 的额外要求。", "date": "2026-04-05", "tags": ["analysis", "revision"]}, {"source": "DNV", "url": "https://www.dnv.us/assurance/Management-Systems/new-iso/transition/iso-9001-revision", "title": "ISO 9001:2026 修订：变化内容与过渡规划 — DNV 指南", "summary": "DNV 预计新版于 2026 年秋季发布。DIS 阶段于 2025 年 8 月底完成，各国成员体提交意见后工作组在 2026 年初进行处置。新版在风险管理、组织知识和变革管理方面有显著调整。", "date": "2026-03-20", "tags": ["revision", "transition"]}, {"source": "Smithers", "url": "https://www.smithers.com/resources/2026/january/iso-9001-news-preparing-for-the-2026-revision", "title": "ISO 9001 新闻：2026 修订准备与气候变化修正案", "summary": "2026 修订将强化协调结构（HS）以确保与其它 ISO 标准的术语一致性，对整合管理体系（IMS）是利好。2024 年 2 月的气候行动修正案（Amd 1:2024）已立即生效，无需过渡期。", "date": "2026-01-25", "tags": ["revision", "analysis"]}, {"source": "Core Business Solutions", "url": "https://www.thecoresolution.com/iso-9001-2026-revision-explained", "title": "ISO 9001:2026 修订深度解读 — 伦理与诚信、数字化、供应链韧性", "summary": "新版 ISO 9001 将整合伦理与诚信到领导力实践，强化风险管理与供应链韧性，增加可持续性和社会责任的明确要求。核心结构保持 HS（协调结构），与 ISO/IEC 27001:2022 对齐。", "date": "2025-12-10", "tags": ["analysis", "revision"]}, {"source": "ISO 27001 中文网", "url": "http://www.iso27001.org.cn/fuwu/iso/iso9001/show_988.html", "title": "ISO 9001:2026 版标准的重要内容和变化（中文）", "summary": "11 项关键变化解读：道德与诚信、使命愿景价值观和质量文化、气候变化、风险与机遇概念更新、新兴技术（AI/元宇宙/VR/聊天机器人）、成文信息可获得性、QA 角色提升、相关方沟通、顾客体验扩展、服务与产品区别。", "date": "2024-12-10", "tags": ["cn", "revision"]}];
+
+const UPDATE_TIME = "2026-08-01 21:13 CST";
+
+(function() {
+  var newsList = document.getElementById('newsList');
+  var emptyMsg = document.getElementById('emptyMsg');
+  var updateTime = document.getElementById('updateTime');
+
+  updateTime.textContent = '最后更新：' + UPDATE_TIME;
+
+  var activeFilter = 'all';
+
+  function render(filter) {
+    activeFilter = filter || activeFilter;
+    var items = NEWS_DATA;
+    if (activeFilter !== 'all') {
+      items = items.filter(function(n) { return n.tags && n.tags.indexOf(activeFilter) >= 0; });
+    }
+    if (items.length === 0) {
+      newsList.innerHTML = '';
+      emptyMsg.style.display = 'block';
+      return;
+    }
+    emptyMsg.style.display = 'none';
+
+    var now = Date.now();
+    var weekAgo = now - 7 * 24 * 60 * 60 * 1000;
+
+    var html = '';
+    for (var i = 0; i < items.length; i++) {
+      var n = items[i];
+      var isNew = new Date(n.date).getTime() > weekAgo;
+      var cls = isNew ? 'news-card new' : 'news-card';
+      html += '<div class="' + cls + '" onclick="window.open(\'' + n.url + '\', \'_blank\')">';
+      html += '<span class="source-tag">' + n.source + '</span>';
+      html += '<span class="date">' + n.date + '</span>';
+      html += '<h3>' + n.title + '</h3>';
+      html += '<div class="summary">' + n.summary + '</div>';
+      html += '<span class="read-more">阅读原文 →</span>';
+      html += '</div>';
+    }
+    newsList.innerHTML = html;
+
+    // stats
+    document.getElementById('totalCount').textContent = NEWS_DATA.length;
+    document.getElementById('newCount').textContent = NEWS_DATA.filter(function(n) {
+      return new Date(n.date).getTime() > weekAgo;
+    }).length;
+    var dates = NEWS_DATA.map(function(n) { return new Date(n.date).getTime(); });
+    if (dates.length > 0) {
+      var range = Math.ceil((now - Math.min.apply(null, dates)) / (24 * 60 * 60 * 1000));
+      document.getElementById('monthCount').textContent = range;
+    }
+  }
+
+  document.getElementById('filterRow').addEventListener('click', function(e) {
+    if (e.target.classList.contains('filter-tag')) {
+      var tags = document.querySelectorAll('.filter-tag');
+      for (var j = 0; j < tags.length; j++) tags[j].classList.remove('active');
+      e.target.classList.add('active');
+      render(e.target.dataset.filter);
+    }
+  });
+
+  render();
+})();
+</script>
+
+</body>
+</html>

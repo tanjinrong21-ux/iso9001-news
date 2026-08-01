@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ISO 9001 标准更新追踪</title>
+<style>
+  :root {
+    --tuv-blue: #003366;
+    --tuv-light: #004d99;
+    --tuv-accent: #0099cc;
+    --bg: #f4f6f9;
+    --card-bg: #ffffff;
+    --text: #1a1a2e;
+    --text-secondary: #5a6070;
+    --border: #e0e4ea;
+    --tag-bg: #e8f4f8;
+    --tag-text: #006080;
+    --fresh: #e63946;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  header {
+    background: linear-gradient(135deg, var(--tuv-blue) 0%, #002244 100%);
+    color: #fff;
+    padding: 2rem 1rem 1.5rem;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 12px rgba(0,0,0,.15);
+  }
+  header h1 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: .02em;
+  }
+  header .subtitle {
+    font-size: .85rem;
+    opacity: .75;
+    margin-top: .25rem;
+  }
+  header .update-time {
+    font-size: .75rem;
+    opacity: .55;
+    margin-top: .5rem;
+  }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  .stats-bar {
+    display: flex;
+    gap: .75rem;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+  }
+  .stat {
+    background: var(--card-bg);
+    border-radius: 8px;
+    padding: .6rem 1rem;
+    font-size: .82rem;
+    color: var(--text-secondary);
+    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    display: flex;
+    align-items: center;
+    gap: .35rem;
+  }
+  .stat .num {
+    font-weight: 700;
+    color: var(--tuv-blue);
+    font-size: 1.1rem;
+  }
+  .stat .new-badge {
+    background: var(--fresh);
+    color: #fff;
+    font-size: .65rem;
+    padding: 1px 6px;
+    border-radius: 10px;
+    font-weight: 600;
+  }
+  .filter-row {
+    display: flex;
+    gap: .5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  .filter-tag {
+    font-size: .78rem;
+    padding: .3rem .75rem;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: #fff;
+    cursor: pointer;
+    transition: all .2s;
+    user-select: none;
+  }
+  .filter-tag:hover { border-color: var(--tuv-accent); color: var(--tuv-accent); }
+  .filter-tag.active {
+    background: var(--tuv-blue);
+    color: #fff;
+    border-color: var(--tuv-blue);
+  }
+  .news-list { display: flex; flex-direction: column; gap: .75rem; }
+  .news-card {
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    transition: transform .15s, box-shadow .15s;
+    border-left: 4px solid transparent;
+    cursor: pointer;
+    position: relative;
+  }
+  .news-card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 12px rgba(0,0,0,.1);
+  }
+  .news-card.new { border-left-color: var(--fresh); }
+  .news-card .source-tag {
+    display: inline-block;
+    font-size: .7rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 12px;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    margin-bottom: .4rem;
+  }
+  .news-card .date {
+    font-size: .78rem;
+    color: var(--text-secondary);
+    float: right;
+  }
+  .news-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: .3rem 0;
+    line-height: 1.4;
+    color: var(--tuv-blue);
+  }
+  .news-card .summary {
+    font-size: .85rem;
+    color: var(--text-secondary);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .news-card .read-more {
+    font-size: .78rem;
+    color: var(--tuv-accent);
+    margin-top: .4rem;
+    display: inline-block;
+  }
+  .news-card a {
+    text-decoration: none;
+    color: inherit;
+  }
+  .empty {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--text-secondary);
+    font-size: .9rem;
+  }
+  footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: .75rem;
+    color: #999;
+  }
+  @media (max-width: 600px) {
+    header h1 { font-size: 1.3rem; }
+    .news-card { padding: .8rem 1rem; }
+    .news-card h3 { font-size: .92rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>ISO 9001 标准更新追踪</h1>
+  <div class="subtitle">追踪 ISO 9001 修订动态 · 行业解读 · 过渡指南</div>
+  <div class="update-time" id="updateTime">最后更新：加载中...</div>
+</header>
+
+<div class="container">
+  <div class="stats-bar">
+    <div class="stat">📰 <span class="num" id="totalCount">-</span> 条消息</div>
+    <div class="stat">🆕 <span class="num" id="newCount">-</span> <span class="new-badge">本周新增</span></div>
+    <div class="stat">🗓 覆盖近 <span class="num" id="monthCount">-</span> 天</div>
+  </div>
+
+  <div class="filter-row" id="filterRow">
+    <span class="filter-tag active" data-filter="all">全部</span>
+    <span class="filter-tag" data-filter="revision">标准修订</span>
+    <span class="filter-tag" data-filter="transition">过渡指南</span>
+    <span class="filter-tag" data-filter="analysis">行业解读</span>
+    <span class="filter-tag" data-filter="official">官方动态</span>
+    <span class="filter-tag" data-filter="cn">中文资讯</span>
+  </div>
+
+  <div class="news-list" id="newsList"></div>
+  <div class="empty" id="emptyMsg" style="display:none">暂无匹配的新闻</div>
+</div>
+
+<footer>
+  <p>数据来源：ISO.org · SGS · DNV · Intertek · Quality Magazine · 认证机构公告</p>
+  <p>每日 9:00 自动更新 · Powered by Hermes AI Agent</p>
+</footer>
+
+<script>
+const NEWS_DATA = __NEWS_DATA_PLACEHOLDER__;
+
+const UPDATE_TIME = "__UPDATE_TIME__";
+
+(function() {
+  var newsList = document.getElementById('newsList');
+  var emptyMsg = document.getElementById('emptyMsg');
+  var updateTime = document.getElementById('updateTime');
+
+  updateTime.textContent = '最后更新：' + UPDATE_TIME;
+
+  var activeFilter = 'all';
+
+  function render(filter) {
+    activeFilter = filter || activeFilter;
+    var items = NEWS_DATA;
+    if (activeFilter !== 'all') {
+      items = items.filter(function(n) { return n.tags && n.tags.indexOf(activeFilter) >= 0; });
+    }
+    if (items.length === 0) {
+      newsList.innerHTML = '';
+      emptyMsg.style.display = 'block';
+      return;
+    }
+    emptyMsg.style.display = 'none';
+
+    var now = Date.now();
+    var weekAgo = now - 7 * 24 * 60 * 60 * 1000;
+
+    var html = '';
+    for (var i = 0; i < items.length; i++) {
+      var n = items[i];
+      var isNew = new Date(n.date).getTime() > weekAgo;
+      var cls = isNew ? 'news-card new' : 'news-card';
+      html += '<div class="' + cls + '" onclick="window.open(\'' + n.url + '\', \'_blank\')">';
+      html += '<span class="source-tag">' + n.source + '</span>';
+      html += '<span class="date">' + n.date + '</span>';
+      html += '<h3>' + n.title + '</h3>';
+      html += '<div class="summary">' + n.summary + '</div>';
+      html += '<span class="read-more">阅读原文 →</span>';
+      html += '</div>';
+    }
+    newsList.innerHTML = html;
+
+    // stats
+    document.getElementById('totalCount').textContent = NEWS_DATA.length;
+    document.getElementById('newCount').textContent = NEWS_DATA.filter(function(n) {
+      return new Date(n.date).getTime() > weekAgo;
+    }).length;
+    var dates = NEWS_DATA.map(function(n) { return new Date(n.date).getTime(); });
+    if (dates.length > 0) {
+      var range = Math.ceil((now - Math.min.apply(null, dates)) / (24 * 60 * 60 * 1000));
+      document.getElementById('monthCount').textContent = range;
+    }
+  }
+
+  document.getElementById('filterRow').addEventListener('click', function(e) {
+    if (e.target.classList.contains('filter-tag')) {
+      var tags = document.querySelectorAll('.filter-tag');
+      for (var j = 0; j < tags.length; j++) tags[j].classList.remove('active');
+      e.target.classList.add('active');
+      render(e.target.dataset.filter);
+    }
+  });
+
+  render();
+})();
+</script>
+
+</body>
+</html>
