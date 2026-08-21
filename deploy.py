@@ -186,7 +186,7 @@ def git_commit_and_push(dry_run=False, no_push=False):
     # Push
     try:
         result = subprocess.run(
-            ["git", "push", "origin", "master"],
+            ["git", "push", "origin", "main"],
             capture_output=True, text=True, timeout=30
         )
         if result.returncode == 0:
