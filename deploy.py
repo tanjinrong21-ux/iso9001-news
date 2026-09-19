@@ -183,42 +183,73 @@ def git_commit_and_push(dry_run=False, no_push=False):
         log("⏸️ 跳过 push（--no-push）")
         return True
 
-    # Push
-    try:
-        result = subprocess.run(
-            ["git", "push", "origin", "main"],
-            capture_output=True, text=True, timeout=30
-        )
+    # Push —— 第一次走 git 配置（可能含本地代理 127.0.0.1:3067）
+    # 若失败（典型原因：Karing 代理未启动，见 2026-09-19 事故），
+    # 自动回退为「直连」再试一次（白天 GitHub 可直连），避免 commit 静默堆积。
+    attempts = [
+        (["git", "push", "origin", "main"], 30, "配置代理"),
+        (["git", "-c", "http.proxy=", "-c", "https.proxy=", "push", "origin", "main"], 90, "直连回退"),
+    ]
+    last_err = ""
+    for cmd, tmo, label in attempts:
+        try:
+            result = subprocess.run(cmd, capture_output=True, text=True, timeout=tmo)
+        except subprocess.TimeoutExpired:
+            last_err = f"{label} 超时({tmo}s)"
+            log(f"⚠️ Push {last_err}，重试...")
+            continue
         if result.returncode == 0:
-            log("✅ Push 成功")
+            log(f"✅ Push 成功（{label}）")
             return True
-        else:
-            log(f"❌ Push 失败: {result.stderr.strip()}")
-            return False
-    except subprocess.TimeoutExpired:
-        log("❌ Push 超时")
-        return False
+        last_err = result.stderr.strip()
+        log(f"⚠️ Push 失败（{label}）: {last_err[:200]}")
+
+    log(f"❌ Push 全部失败: {last_err[:200]}")
+    log("   本地 commit 未丢失，下次运行会一并推送")
+    return False
 
 
-def verify_deployment():
-    """验证 GitHub Pages 部署状态。"""
+def _head_sha():
     try:
-        result = subprocess.run(
-            ["gh", "api", f"repos/{GH_USER}/{GH_REPO}/pages"],
-            capture_output=True, text=True, timeout=10
-        )
-        if result.returncode == 0:
-            data = json.loads(result.stdout)
-            status = data.get("status", "unknown")
-            url = data.get("html_url", PAGES_URL)
-            log(f"🌐 Pages 状态: {status} → {url}")
-            return status == "built"
-        else:
-            log(f"⚠️ 无法查询 Pages 状态: {result.stderr.strip()}")
+        r = subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True, timeout=10)
+        return r.stdout.strip()
+    except Exception:
+        return ""
+
+
+def verify_deployment(max_wait=180):
+    """验证 GitHub Pages 是否真的部署了本次 commit（push ≠ 部署）。"""
+    head = _head_sha()
+    deadline = time.time() + max_wait
+    last = "unknown"
+    while time.time() < deadline:
+        try:
+            result = subprocess.run(
+                ["gh", "api", f"repos/{GH_USER}/{GH_REPO}/pages/builds/latest"],
+                capture_output=True, text=True, timeout=15
+            )
+            if result.returncode == 0:
+                data = json.loads(result.stdout)
+                status = data.get("status", "unknown")
+                commit = data.get("commit", "")
+                last = status
+                if status == "built" and (not head or commit == head):
+                    log(f"🌐 Pages 部署确认: built @ {commit[:7]} → {PAGES_URL}")
+                    return True
+                if status == "errored":
+                    log(f"❌ Pages 构建失败(errored) @ {commit[:7]} — 需新 commit 触发重建")
+                    return False
+                log(f"⏳ Pages 构建中: {status} @ {commit[:7]}（等待...）")
+            else:
+                log(f"⚠️ 无法查询 Pages 构建状态: {result.stderr.strip()[:150]}")
+                return False
+        except Exception as e:
+            log(f"⚠️ 验证异常: {e}")
             return False
-    except Exception as e:
-        log(f"⚠️ 验证异常: {e}")
-        return False
+        time.sleep(15)
+
+    log(f"⚠️ Pages 构建超时未确认（最后状态: {last}）")
+    return False
 
 
 def main():
