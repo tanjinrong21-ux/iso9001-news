@@ -34,6 +34,62 @@ PAGES_URL = f"https://{GH_USER}.github.io/{GH_REPO}/"
 # 已知新闻源（手动维护，作为基础数据）
 MANUAL_SOURCES = [
     {
+        "source": "ISO",
+        "url": "https://www.iso.org/news/2026/09/ISO9001-2026",
+        "title": "ISO 9001:2026 正式发布 — 全球最广泛应用质量管理标准迎来第六版",
+        "summary": "ISO 于 2026 年 9 月 16 日在日内瓦宣布 ISO 9001:2026《质量管理体系 — 要求》正式发布，取代 ISO 9001:2015。新版更强调领导力、质量文化与道德行为，对风险和机遇的考虑给出更清晰的说明，采用最新协调结构（HS）以便与其他管理体系整合，并新增附录 A 阐释条款意图。ISO 秘书长 Sergio Mujica 称其为质量管理「黄金标准」的里程碑。ISO 9001 还将纳入 ISO 首批数字化增强内容，自 2026 年 10 月 1 日起提供。",
+        "date": "2026-09-16",
+        "tags": ["official", "revision"]
+    },
+    {
+        "source": "ISO",
+        "url": "https://www.iso.org/standard/88464.html",
+        "title": "ISO 9001:2026（第 6 版）标准页面 — 修订全生命周期节点可查",
+        "summary": "ISO 官网 ISO 9001 页面显示第 6 版（Edition 6，2026-09），将取代 ISO 9001:2015。关键节点：DIS 注册 2025-06-30、DIS 投票启动 2025-08-27、投票结束 2025-11-20、DIS 获批转 FDIS 2026-04-15、FDIS 投票启动 2026-05-14、投票结束 2026-07-10、进入出版阶段（60.00）。提示：截至 2026-09-22 查询时该页面仍显示「出版中 · 最终制作步骤（最长约七周）」，最终出版阶段 60.60 待 ISO 更新。",
+        "date": "2026-09-16",
+        "tags": ["official"]
+    },
+    {
+        "source": "ISO",
+        "url": "https://www.iso.org/quality-management/iso-9001-2026",
+        "title": "ISO 官方解读：ISO 9001:2026 要点须知 — 变化、不变与过渡安排",
+        "summary": "ISO 官方说明新版已成为现行版本并取代 2015 版，条款结构维持协调结构不变。重点变化：第 6.1 条更清晰区分风险与机遇；第 7.3 条新增对质量文化与道德行为的意识要求；新增附录 A 澄清关键概念、术语与条款意图。获证组织有三年过渡期，无需重新走一遍认证流程，具体时间由认证机构沟通。ISO 建议先做差距分析，再更新过程与成文信息，并让各层级人员理解变化。",
+        "date": "2026-09-16",
+        "tags": ["official", "analysis", "transition"]
+    },
+    {
+        "source": "ISO/TC 176/SC 2",
+        "url": "https://committee.iso.org/sites/tc176sc2/home/news/content-left-area/news-and-updates/news-1.html",
+        "title": "ISO/FDIS 9001 以压倒性国际支持获批 — 确认 9 月 16 日出版",
+        "summary": "ISO/TC 176/SC 2 于 2026-08-07 公告：ISO/FDIS 9001 获得压倒性国际支持通过，第六版 ISO 9001 计划于 2026-09-16 出版，并向 WG 29 召集人、支持团队及全体成员为这一全球质量管理界里程碑所作的贡献致谢。",
+        "date": "2026-08-07",
+        "tags": ["official", "revision"]
+    },
+    {
+        "source": "NSF",
+        "url": "https://www.nsf.org/knowledge-library/iso-90012026-published-on-september-16-2026-what-quality-leaders-need-to-know",
+        "title": "NSF：ISO 9001:2026 将于 9 月 16 日发布 — 质量负责人须知",
+        "summary": "NSF 技术方案经理 Marco Brunato 撰文：ISO 已公布 ISO 9001:2026 于 2026-09-16（周三）发布。新版是演进而非革命，体系成熟的组织无需大改；重点强化质量文化、道德行为、风险管理、组织知识与气候相关考虑。2015 版获证组织预计有约三年过渡期，可结合既有认证周期完成转换，提早规划者过渡更顺、受益更快。",
+        "date": "2026-08-07",
+        "tags": ["analysis", "transition"]
+    },
+    {
+        "source": "ISTO",
+        "url": "https://www.isto.ch/pt/insights/iso9001-2026-changes",
+        "title": "ISO 9001:2026 变化解析：质量文化、气候变化与扩展的附录 A",
+        "summary": "ISTO 于 2026-06-22 发布的解读：发布日为 2026-09-16，三年过渡期预计至 2029 年 9 月，正式时长待认可机构确认。值得注意的组织变更：IAF 职能自 2026-01-01 起由 Global Accreditation Cooperation Incorporated（Global ACI）承接，过渡期的正式安排将由该机构公布。2015 版证书在整个过渡期内持续有效，企业因此有真正的时机选择空间。",
+        "date": "2026-06-22",
+        "tags": ["analysis", "transition"]
+    },
+    {
+        "source": "标准知多点 / 江苏省钢铁行业协会",
+        "url": "http://www.jsgt.org.cn/index.php/Home/Index/art/a_id/38532.html",
+        "title": "国家标准《质量管理体系 要求》启动修订 — 拟等同采用 ISO 9001:2026（中文）",
+        "summary": "市场监管总局标准技术管理司就 153 项拟立项国家标准征求意见，其中《质量管理体系 要求》拟修订，等同采用 ISO 9001:2026，代替现行 GB/T 19001-2016。该标准由 TC151（全国质量管理和质量保证标准化技术委员会）归口，国家标准委主管，中国标准化研究院牵头起草，项目周期 10 个月，意见征集截止 2026-08-06。中文要点：强化最高管理者牵头落实道德与诚信，新增质量文化建设内容，更关注气候变化因素，风险与机遇拆分为两个独立条款，附录新增新兴技术管控内容，并以「可获得」取代「保持 / 保留」的成文信息表述。",
+        "date": "2026-07-10",
+        "tags": ["cn", "revision"]
+    },
+    {
         "source": "9001Simplified",
         "url": "https://www.9001simplified.com/learn/next-iso-9001-revision.php",
         "title": "ISO 9001:2026 修订完整时间线 — DIS 批准至 FDIS 发布",
