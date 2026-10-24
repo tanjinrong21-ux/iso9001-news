@@ -34,6 +34,22 @@ PAGES_URL = f"https://{GH_USER}.github.io/{GH_REPO}/"
 # 已知新闻源（手动维护，作为基础数据）
 MANUAL_SOURCES = [
     {
+        "source": "ISO/TC 176",
+        "url": "https://committee.iso.org/sites/tc176/home/news/content-left-area/news-and-updates/news.html",
+        "title": "ISO/TC 176 官方公告：ISO 9001:2026 已发布 — 附完整过渡时间表",
+        "summary": "ISO/TC 176 于 2026-09-23 由 Mark Finewood 发布公告确认 ISO 9001:2026 已于 2026-09-16 出版，并给出经 Global ACI 确认的过渡关键节点：认可机构最迟 2027-03-31 具备对 ISO 9001:2026 实施评审的能力；获认可的认证机构须在 2027-06-30 前提交过渡声明及支持性信息；认可机构的过渡决定须在 2027-09-30 前完成；自 2028-03-31 起，新的和初次认可认证只能依据 ISO 9001:2026 颁发；已获 ISO 9001:2015 认证的组织须在 2029-09-30 前完成过渡。变化要点：措辞更清晰，更强调领导力、质量文化与责任担当，风险与机遇表述更明确，新增附录 A 澄清关键术语与条款意图，并与其他管理体系标准保持更好对齐。",
+        "date": "2026-09-23",
+        "tags": ["official", "transition"]
+    },
+    {
+        "source": "Global ACI",
+        "url": "https://global-aci.org/en/news/global-aci-publishes-transition-requirements-for-iso-90012026",
+        "title": "Global ACI 正式发布 ISO 9001:2026 过渡要求 — 强制性文件 TECH-3-TR 2029-09-30 (M)",
+        "summary": "原 IAF 职能承接方 Global ACI（国际认可合作组织）已发布强制性文件 Global ACI-TECH-3-TR 2029-09-30 (M)《Transition Requirements for ISO 9001:2026》，签发日 2026-09-04、实施日 2026-09-16，为认可机构与获认可认证机构提供从 ISO 9001:2015（含 Amd 1:2024）向新版过渡的时间表，对 Global ACI MRA 签署方及其认可认证机构具强制性。核心期限：认可机构最迟 2027-03-31 具备评审能力；认证机构 2027-06-30 前提交过渡声明；认可机构过渡决定 2027-09-30 前完成；2028-03-31 起新发/初次认可认证仅限 ISO 9001:2026；现有 2015 版获证组织最迟 2029-09-30 完成过渡，可在例行监督或再认证审核中完成，也可另做专项过渡审核。全球逾百万张获认可 ISO 9001 证书需在此统一时间框架下完成转换。",
+        "date": "2026-09-16",
+        "tags": ["official", "transition"]
+    },
+    {
         "source": "ISO",
         "url": "https://www.iso.org/news/2026/09/ISO9001-2026",
         "title": "ISO 9001:2026 正式发布 — 全球最广泛应用质量管理标准迎来第六版",
