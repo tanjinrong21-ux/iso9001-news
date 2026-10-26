@@ -34,6 +34,46 @@ PAGES_URL = f"https://{GH_USER}.github.io/{GH_REPO}/"
 # 已知新闻源（手动维护，作为基础数据）
 MANUAL_SOURCES = [
     {
+        "source": "ACCREDIA（意大利认可机构）",
+        "url": "https://www.accredia.it/wp-content/uploads/2026/10/Circolare_informativa_DC_41-2026_ENG-Transition-to-ISO9001-2026-and-ISO14001-2026.pdf",
+        "title": "ACCREDIA 发布第 41/2026 号通告 — ISO 9001:2026 与 ISO 14001:2026 认可转换操作安排",
+        "summary": "意大利认可机构 ACCREDIA 于 2026-10-20 签发信息通告第 41/2026 号（Ref. DC2026SPM145），首次把 Global ACI 的强制性过渡要求落地为认可机构层面的操作程序，并给出 ISO 9001:2026 五道关键期限：ACCREDIA 自身具备按新版评审的能力 2027-03-31；获认可认证机构（CAB）提交过渡声明及支持文件 2027-06-30；ACCREDIA 完成 CAB 认可转换决定 2027-09-30；停止按 ISO 9001:2015 颁发新证书 2028-03-31；过渡期结束、2015 版证书失效 2029-09-30。通告同时明确：CAB 完成内部适配后即可开展新版审核，但在 ACCREDIA 经 CSA CI 决议批准其认可转换前，不得颁发新版证书；自通告签发日起可受理新版认可申请。这是首个公开的国家/地区级落地时间表，对判断各认可机构节奏具参考价值。",
+        "date": "2026-10-20",
+        "tags": ["official", "transition"]
+    },
+    {
+        "source": "ISO/TC 176/SC 2",
+        "url": "https://committee.iso.org/sites/tc176sc2/home/news/content-left-area/news-and-updates/news-2.html",
+        "title": "ISO/TC 176/SC 2 正式发布：ISO 9001:2026 已出版 — 附五条过渡时间节点",
+        "summary": "ISO/TC 176/SC 2 于 2026-09-28 由 Mark Finewood 发布公告《ISO 9001:2026 has been released!》，确认 ISO 9001:2026 已于 2026-09-16 出版，并集中列出五条过渡指引：认可机构最迟 2027-03-31 具备按新版评审能力；获认可认证机构 2027-06-30 前提交过渡声明及支持信息；认可机构过渡决定 2027-09-30 前完成；自 2028-03-31 起新的和初次认可认证只能按 ISO 9001:2026 颁发；已获 2015 版认证的组织须在 2029-09-30 前完成过渡，可在例行监督审核、再认证审核中完成，也可另做专项过渡审核。公告强调本次修订是在既有框架上的更新：措辞更清晰，更强调领导力、质量文化与责任担当，风险与机遇表述更明确，新增附录 A 澄清关键术语与条款意图，并与其他管理体系标准保持更好对齐。",
+        "date": "2026-09-28",
+        "tags": ["official", "transition"]
+    },
+    {
+        "source": "SCC（加拿大标准理事会）",
+        "url": "https://scc-ccn.ca/accreditation/bulletins/quality-management-systems-transition-iso-90012026",
+        "title": "加拿大 SCC 第 2026-23 号公告 — ISO 9001:2026 认可过渡安排与 CAB 提交要求",
+        "summary": "加拿大标准理事会（SCC）于 2026-09-25 发布第 2026-23 号公告，面向管理体系认可项目（MSAP）的获认可客户、申请人、认可咨询小组及评审员，明确 ISO 9001:2026（含 Global ACI-TECH-3-TR 2029-09-30 (M)）均于 2026-09-16 生效，属 Level 5 标准，修订直接影响合格评定机构（CAB）。CAB 须提交的证据包包括：过渡计划、为支撑新版认证项目能力而更新的 CAB 文件、审核人日变更、证书控制安排，且须自行向 SCC 证明其已充分覆盖新版要求与能力需求。关键节点：2027-03-31 起 SCC 开始过渡评审；最迟 2027-06-30 提交附录 A 过渡声明及支持文件；2027-09-30 前完成 SCC 的过渡决定（含认可文件/证书签发）；此后仅受理 2026 版申请；所有现行认证须转换为 2026 版。",
+        "date": "2026-09-25",
+        "tags": ["official", "transition"]
+    },
+    {
+        "source": "ANSI",
+        "url": "https://www.ansi.org/standards-news/all-news/9-16-26-first-full-revision-of-iso-9001-in-a-decade-now-available-from-ansi",
+        "title": "ANSI：十年来首次全面修订 — ISO 9001:2026 已可通过 ANSI 网络书店获取",
+        "summary": "美国国家标准机构 ANSI 于 2026-09-16 发文称 ISO 9001:2026 是这一全球应用最广质量管理标准十余年来首次全面修订，并概括六项更新：风险与机遇的区分更清晰，鼓励组织像防范挫折一样主动寻找改进机会；更强调质量文化、价值观与道德行为，明确领导层在营造质量环境中的角色；更重视变更管理，帮助组织有意识地而非被动应对转变；气候变化内容并入正文（吸收 2015 版 2024 修正案）；修订附录 A 阐释要求意图以降低歧义误读，对首次使用者与小微企业尤其友好；通过最新协调结构加强与其他管理体系标准对齐，使整合体系运行更高效。ANSI 总裁 Laurie E. Locascio 表示信任不是宣称出来的，而是通过开放、平衡与共识建立的。文中提示：认证机构须先由认可机构完成自身过渡，才能颁发新版证书，组织应尽早与认证机构排定过渡审核。",
+        "date": "2026-09-16",
+        "tags": ["official", "analysis"]
+    },
+    {
+        "source": "Smithers",
+        "url": "https://www.smithers.com/resources/2026/september/iso-9001-2026-is-here-what-your-business-must-know",
+        "title": "Smithers：ISO 9001:2026 已生效 — 审核关注点与过渡实操要点",
+        "summary": "Smithers 于 2026 年 9 月发布的实务解读，站在审核视角拆解新版变化：一是质量文化与道德要求升级，领导层须证明质量价值观已嵌入全业务而非局限于质量部门，质量从合规职能回归全员共担；二是风险与机遇管理更严格，简单的风险登记表已不够，组织需有分析、排序与行动计划，以改善决策并激发真正的创新机会；三是变更管理要求收紧，凡可能影响质量绩效的重大变更，都须能证明策划、沟通、监测与评审有效；四是气候变化考量直接纳入标准正文，组织须评估气候议题与其业务环境、相关方及质量目标的相关性。文章同时引用 NSF 技术方案经理 Marco Brunato 的观点：新版与 ISO 协调结构一致，同时回应组织韧性、道德行为、知识管理与气候议题等当代挑战。审核仍以有效性为核心，而非文件化程度。",
+        "date": "2026-09-16",
+        "tags": ["analysis", "transition"]
+    },
+    {
         "source": "ISO/TC 176",
         "url": "https://committee.iso.org/sites/tc176/home/news/content-left-area/news-and-updates/news.html",
         "title": "ISO/TC 176 官方公告：ISO 9001:2026 已发布 — 附完整过渡时间表",
