@@ -34,6 +34,22 @@ PAGES_URL = f"https://{GH_USER}.github.io/{GH_REPO}/"
 # 已知新闻源（手动维护，作为基础数据）
 MANUAL_SOURCES = [
     {
+        "source": "UKAS（英国认可机构）",
+        "url": "https://www.ukas.com/resources/technical-bulletins/qms-iso-9001-2026-transition",
+        "title": "UKAS 发布过渡通告修订版 1 — 11 月 1 日起启动 ISO 9001:2026 认可转换评审",
+        "summary": "英国认可机构 UKAS 于 2026-10-07 发布《QMS ISO 9001:2026 过渡》技术通告修订版 1，取代 9 月 16 日原版，改为分两批作出认可转换决定：自 2026-11-01 起 UKAS 具备开展转换评审活动的能力；2027-01-31 前完成首批转换决定；自 2027-02-01 起按认证机构（CAB）准备程度分批推进，全部转换决定须在 2027-09-30 前完成。转换评审以 CAB 自声明加实施证据为基础，CAB 须完成书面差距分析、识别适用变更、落实更改、确保人员具备新版评审能力，并建立客户转换安排。通告同时明确：自 2028-03-16 起 CAB 不得再受理 ISO 9001:2015 新申请，全部获证客户须在 2029-09-30 前完成转换；在 UKAS 正式批准其认可转换前，CAB 颁发的 2026 版证书不得宣称为 UKAS 认可。",
+        "date": "2026-10-07",
+        "tags": ["official", "transition"]
+    },
+    {
+        "source": "ISO/TC 176/SC 2",
+        "url": "https://committee.iso.org/sites/tc176sc2/home/news/content-left-area/news-and-updates/news-6.html",
+        "title": "ISO/TC 176/SC 2 第 53 次全会在伦敦举行 — ISO 9002 进入 FDIS 阶段，ISO 9004 拟 2027 年启动修订",
+        "summary": "ISO/TC 176/SC 2 于 2026-10-27 发布消息：第 53 次全会已于 2026-10-15 在伦敦以线下方式召开，这是 ISO 9001:2026 出版后的首次全会，会上检视在研项目进展并确定后续工作。要点：一是 SC 2 正式致谢 WG 29 专家对 ISO 9001 修订的贡献，WG 29 将再开一次会议复盘项目并总结经验；二是 ISO 9002（ISO 9001 应用指南）修订进展顺利，最终国际标准草案（FDIS）预计 2027 年初分发各成员体；三是面向小型企业的 ISO 9001 手册同步修订，以反映 2026 版变化，成员体可经国家标准化机构或联络组织提交意见；四是全会同意于 2027 年设立新的任务组（TG），为 ISO 9004 的可能修订做前期准备；五是继续开发 SC 2 绩效度量指标。对已获证组织而言，这意味着指南类文件将在 2027 年陆续更新，可作为过渡实施的配套参考。",
+        "date": "2026-10-27",
+        "tags": ["official", "transition"]
+    },
+    {
         "source": "ACCREDIA（意大利认可机构）",
         "url": "https://www.accredia.it/wp-content/uploads/2026/10/Circolare_informativa_DC_41-2026_ENG-Transition-to-ISO9001-2026-and-ISO14001-2026.pdf",
         "title": "ACCREDIA 发布第 41/2026 号通告 — ISO 9001:2026 与 ISO 14001:2026 认可转换操作安排",
